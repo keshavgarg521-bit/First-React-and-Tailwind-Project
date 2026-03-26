@@ -42,58 +42,73 @@ const Paste = () => {
   }
 
   return (
-    <div>
+    <div className="max-w-4xl mx-auto px-4">
 
       {/* SEARCH */}
       <input
-        className="bg-gray-800 text-white px-3 py-2 rounded-xl mt-5
-        border border-gray-600 min-w-[900px]
-        shadow-md shadow-black/30
+        className="w-full bg-gradient-to-r from-gray-900 to-gray-800 
+        text-white px-4 py-3 rounded-xl mt-6
+        border border-gray-700 
+        shadow-md
         outline-none 
-        focus:border-purple-500 
-        focus:shadow-purple-500/20"
+        focus:ring-2 focus:ring-purple-500/30
+        transition"
         type="search"
-        placeholder="Search here"
+        placeholder="🔍 Search your notes..."
         value={searchTitle}
-        onChange={(e) => setSearchTitle(e.target.value)}  // ✅ FIXED
+        onChange={(e) => setSearchTitle(e.target.value)}
       />
 
       {/* LIST */}
-      <div className="flex items-center flex-col gap-5 mt-5">
+      <div className="flex flex-col gap-6 mt-8">
 
         {filteredData.length > 0 &&
           filteredData.map((paste) => {
             return (
               <div
-                key={paste._id}   // ✅ FIXED
-                className="flex flex-col justify-center border items-center min-w-[900px] py-2"
+                key={paste._id}
+                className="bg-gradient-to-br from-gray-900 via-gray-800 to-slate-800
+                border border-gray-700 
+                text-white p-5 rounded-xl shadow-lg 
+                hover:shadow-xl hover:scale-[1.01] 
+                transition duration-300"
               >
 
                 {/* TITLE */}
-                <div>{paste.title}</div>
+                <div className="text-lg font-semibold text-gray-100">
+                  {paste.title}
+                </div>
 
                 {/* CONTENT */}
-                <div>{paste.content}</div>
+                <div className="text-sm text-gray-300 mt-1 break-words">
+                  {paste.content}
+                </div>
 
                 {/* BUTTONS */}
-                <div className="flex justify-evenly items-center w-full mt-2">
+                <div className="flex flex-wrap gap-2 mt-4">
 
-                  {/* EDIT */}
-                  <button className="bg-gray-700 text-white px-2 py-1 rounded-xl 
-                    shadow-md shadow-black/30 hover:bg-purple-600 transition">
-                    <a href={`/?pasteId=${paste._id}`}>Edit</a>
-                  </button>
+                  <a
+                    href={`/?pasteId=${paste._id}`}
+                    className="bg-white/10 hover:bg-white/20 
+                    px-3 py-1 rounded-lg text-sm 
+                    backdrop-blur-md transition"
+                  >
+                    Edit
+                  </a>
 
-                  {/* VIEW */}
-                  <button className="bg-gray-700 text-white px-2 py-1 rounded-xl 
-                    shadow-md shadow-black/30 hover:bg-purple-600 transition">
-                    <a href={`/pastes/${paste._id}`}>View</a>
-                  </button>
+                  <a
+                    href={`/pastes/${paste._id}`}
+                    className="bg-white/10 hover:bg-white/20 
+                    px-3 py-1 rounded-lg text-sm 
+                    backdrop-blur-md transition"
+                  >
+                    View
+                  </a>
 
-                  {/* COPY */}
                   <button
-                    className="bg-gray-700 text-white px-2 py-1 rounded-xl 
-                    shadow-md shadow-black/30 hover:bg-purple-600 transition"
+                    className="bg-white/10 hover:bg-white/20 
+                    px-3 py-1 rounded-lg text-sm 
+                    backdrop-blur-md transition"
                     onClick={() => {
                       navigator.clipboard.writeText(paste.content);
                       toast.success("Copied to Clipboard");
@@ -102,19 +117,18 @@ const Paste = () => {
                     Copy
                   </button>
 
-                  {/* SHARE */}
                   <button
-                    className="bg-gray-700 text-white px-2 py-1 rounded-xl 
-                    shadow-md shadow-black/30 hover:bg-purple-600 transition"
+                    className="bg-white/10 hover:bg-white/20 
+                    px-3 py-1 rounded-lg text-sm 
+                    backdrop-blur-md transition"
                     onClick={() => handleShare(paste)}
                   >
                     Share
                   </button>
 
-                  {/* DELETE */}
                   <button
-                    className="bg-gray-700 text-white px-2 py-1 rounded-xl 
-                    shadow-md shadow-black/30 hover:bg-purple-600 transition"
+                    className="bg-red-500/80 hover:bg-red-600 
+                    px-3 py-1 rounded-lg text-sm transition"
                     onClick={() => handleDelete(paste._id)}
                   >
                     Delete
@@ -123,7 +137,7 @@ const Paste = () => {
                 </div>
 
                 {/* DATE */}
-                <div>
+                <div className="text-xs text-gray-400 mt-3">
                   {new Date(paste.createdAt).toLocaleString()}
                 </div>
 

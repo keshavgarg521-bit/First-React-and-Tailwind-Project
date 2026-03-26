@@ -4,53 +4,67 @@ import { useParams, useSearchParams } from 'react-router-dom';
 import { addToPastes, updateToPastes } from '../redux/pasteSlice'
 
 const ViewPaste = () => {
-   const {id} = useParams();
-   
-   const allPastes = useSelector(
-    (state) =>state.paste.pastes
-   );
+  const { id } = useParams();
 
-   const paste = allPastes.filter((p) => p._id === id)[0];
-   console.log(paste);
-  
-  return (
-    <div className="w-full flex  flex-col items-center mt-7">
+  const allPastes = useSelector(
+    (state) => state.paste.pastes
+  );
 
-      {/* Input + Button */}
-      <div className="flex gap-3">
-        <input
-          className="bg-gray-800 text-white px-4 py-2 rounded-xl 
-                     border border-gray-600 
-                     shadow-md shadow-black/30
-                     outline-none 
-                     focus:border-purple-500 
-                     focus:shadow-purple-500/20"
-          type="text"
-          placeholder="enter title here"
-          value={paste.title}
-          disabled
-          onChange={(e) => setTitle(e.target.value)}
-        />
-      </div>
+  const paste = allPastes.filter((p) => p._id === id)[0];
+  console.log(paste);
 
-     <div>
-      {/* Textarea */}
+return (
+  <div className="w-full flex flex-col items-center mt-7">
+
+    {/* TITLE */}
+    <div className="flex gap-3">
+      <input
+        className="bg-gradient-to-r from-gray-800 to-gray-900 
+        text-white px-5 py-2 rounded-xl 
+        border border-gray-700 
+        shadow-md
+        text-center font-medium
+        outline-none"
+        type="text"
+        value={paste.title}
+        disabled
+      />
+    </div>
+
+    {/* CONTENT BOX */}
+    <div className="relative mt-5">
+
+      {/* COPY BUTTON (FIXED) */}
+      <button
+        onClick={() => {
+          navigator.clipboard.writeText(paste.content);
+          toast.success("Copied ✅");
+        }}
+        className="absolute top-3 right-3 
+        bg-white/20 hover:bg-white/30 
+        text-white px-3 py-1 rounded-lg 
+        backdrop-blur-md transition text-sm"
+      >
+        Copy
+      </button>
+
+      {/* TEXTAREA */}
       <textarea
-        className="mt-5 min-w-[800px] bg-gray-800 text-white 
-                   p-4 rounded-xl border border-gray-600 
-                   shadow-md shadow-black/30
-                   outline-none 
-                   focus:border-purple-500 
-                   focus:shadow-purple-500/20 resize-none"
-        placeholder="Enter the context here..."
+        className="min-w-[800px] bg-gradient-to-br from-gray-900 to-gray-800 
+        text-white p-5 rounded-xl 
+        border border-gray-700 
+        shadow-lg
+        outline-none 
+        resize-none
+        leading-relaxed"
         value={paste.content}
         disabled
-        onChange={(e) => setValue(e.target.value)}
         rows={20}
       />
-      </div>
+
     </div>
-  )
+  </div>
+);
 }
 
 export default ViewPaste

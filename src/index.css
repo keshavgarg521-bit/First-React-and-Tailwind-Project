@@ -1,23 +1,20 @@
 @import "tailwindcss";
 
-/* Base reset */
+/*
 body {
   margin: 0;
   padding: 0;
 }
 
-/* Root container */
 #root {
-  @apply bg-gray-950 min-h-screen flex flex-col items-center 
+  @apply bg-white min-h-screen flex flex-col items-center 
   text-gray-300;
 }
 
-/* Container */
 .container {
   @apply w-full max-w-3xl px-4 py-6 text-center;
 }
 
-/* Navbar */
 .navbar {
   @apply flex gap-6 justify-center mb-6 border-b border-gray-800 pb-3;
 }
@@ -26,7 +23,6 @@ body {
   @apply text-gray-400 hover:text-purple-400 cursor-pointer transition;
 }
 
-/* Input (FIXED - now visible) */
 .input-box {
   @apply bg-gray-800 text-white px-4 py-2 rounded-xl 
          border border-gray-600 
@@ -37,7 +33,6 @@ body {
          transition;
 }
 
-/* Textarea */
 .textarea-box {
   @apply mt-6  bg-gray-800 text-white 
          p-4 rounded-xl border border-gray-600 
@@ -48,7 +43,6 @@ body {
          transition;
 }
 
-/* Button */
 .btn {
   @apply bg-gray-700 text-white px-4 py-2 rounded-xl 
          shadow-md shadow-black/30
@@ -56,7 +50,6 @@ body {
          transition ml-3;
 }
 
-/* Headings */
 h1 {
   @apply text-4xl font-semibold text-white my-6;
 }
@@ -65,7 +58,7 @@ h2 {
   @apply text-xl font-medium text-gray-200 mb-2;
 }
 
-/* Paragraph */
 p {
   @apply text-gray-400;
 }
+*/

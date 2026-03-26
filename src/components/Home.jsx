@@ -54,70 +54,77 @@ const Home = () => {
     setSearchParams({});
   }
 
-  return (
-    <div className="w-full flex flex-col items-center mt-7">
+return (
+  <div className="max-w-4xl mx-auto px-4 mt-8">
 
-      {/* INPUT + BUTTON */}
-      <div className="flex gap-3">
-        <input
-          className="bg-gray-800 text-white px-4 py-2 rounded-xl 
-          border border-gray-600 
-          shadow-md shadow-black/30
-          outline-none 
-          focus:border-purple-500 
-          focus:shadow-purple-500/20"
-          type="text"
-          placeholder="enter title here"
-          value={title}
-          onChange={(e) => setTitle(e.target.value)}
-        />
+    {/* TITLE SECTION */}
+    <div className="flex flex-col sm:flex-row gap-3 items-center">
 
-        <button
-          onClick={createPaste}
-          className="bg-gray-700 text-white px-4 py-2 rounded-xl 
-          shadow-md shadow-black/30
-          hover:bg-purple-600 transition"
-        >
-          {pasteId ? "Update My Paste" : "Create My Paste"}
-        </button>
-      </div>
+      <input
+        className="w-full sm:flex-1 bg-gray-900 text-white px-4 py-3 rounded-xl 
+        border border-gray-700 
+        shadow-md
+        outline-none 
+        focus:border-purple-500 
+        focus:ring-2 focus:ring-purple-500/30
+        transition"
+        type="text"
+        placeholder="📝 Enter title..."
+        value={title}
+        onChange={(e) => setTitle(e.target.value)}
+      />
 
-      {/* TEXTAREA WITH COPY BUTTON */}
-      <div className="relative mt-5">
-
-        {/* COPY BUTTON */}
-        <button
-          onClick={() => {
-            if (!value.trim()) {
-              toast.error("Nothing to copy ❌");
-              return;
-            }
-            navigator.clipboard.writeText(value);
-            toast.success("Copied to Clipboard ✅");
-          }}
-          className="absolute top-3 right-3 bg-gray-700 text-white px-3 py-1 rounded-lg 
-          shadow-md hover:bg-purple-600 transition text-sm z-10"
-        >
-          Copy
-        </button>
-
-        {/* TEXTAREA */}
-        <textarea
-          className="min-w-[800px] bg-gray-800 text-white 
-          p-4 pt-3 rounded-xl border border-gray-600 
-          shadow-md shadow-black/30
-          outline-none 
-          focus:border-purple-500 
-          focus:shadow-purple-500/20 resize-none"
-          placeholder="Enter the context here..."
-          value={value}
-          onChange={(e) => setValue(e.target.value)}
-          rows={20}
-        />
-      </div>
+      <button
+        onClick={createPaste}
+        className="bg-gradient-to-r from-indigo-500 to-purple-500 
+        text-white px-5 py-3 rounded-xl 
+        shadow-md hover:scale-105 transition duration-200 whitespace-nowrap"
+      >
+        {pasteId ? "Update" : "Create"}
+      </button>
 
     </div>
-  )
+
+    {/* TEXTAREA CARD */}
+    <div className="relative mt-6">
+
+      {/* COPY BUTTON */}
+      <button
+        onClick={() => {
+          if (!value.trim()) {
+            toast.error("Nothing to copy ❌");
+            return;
+          }
+          navigator.clipboard.writeText(value);
+          toast.success("Copied ✅");
+        }}
+        className="absolute top-4 right-4 
+        bg-white/20 hover:bg-white/30 
+        text-white px-3 py-1 rounded-lg 
+        backdrop-blur-md transition text-sm z-10"
+      >
+        Copy
+      </button>
+
+      {/* TEXTAREA */}
+      <textarea
+        className="w-full min-h-[800px] bg-gradient-to-br from-gray-900 to-gray-800 
+        text-white p-5 pt-6 rounded-2xl 
+        border border-gray-700 
+        shadow-xl
+        outline-none 
+        focus:border-purple-500 
+        focus:ring-2 focus:ring-purple-500/20 
+        resize-none transition"
+        placeholder="✨ Start writing your note..."
+        value={value}
+        onChange={(e) => setValue(e.target.value)}
+      />
+
+    </div>
+
+  </div>
+);
 }
 
 export default Home;
