@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { removeFromPastes } from '../redux/pasteSlice';
 import toast from 'react-hot-toast';
+import { Link } from "react-router-dom";
 
 const Paste = () => {
 
@@ -96,14 +97,14 @@ const Paste = () => {
                     Edit
                   </a>
 
-                  <a
-                    href={`/pastes/${paste._id}`}
+                  <Link
+                    to={`/pastes/${paste._id}`}
                     className="bg-white/10 hover:bg-white/20 
                     px-3 py-1 rounded-lg text-sm 
                     backdrop-blur-md transition"
                   >
                     View
-                  </a>
+                  </Link>
 
                   <button
                     className="bg-white/10 hover:bg-white/20 
