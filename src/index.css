@@ -14,7 +14,7 @@ body {
 .container {
   @apply w-full max-w-3xl px-4 py-6 text-center;
 }
-
+ 
 .navbar {
   @apply flex gap-6 justify-center mb-6 border-b border-gray-800 pb-3;
 }

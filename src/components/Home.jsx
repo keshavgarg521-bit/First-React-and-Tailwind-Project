@@ -43,7 +43,8 @@ const Home = () => {
     if (pasteId) {
       dispatch(updateToPastes(paste));
       toast.success("Paste Updated ✅");
-    } else {
+    }
+    else {
       dispatch(addToPastes(paste));
       toast.success("Paste Created ✅");
     }

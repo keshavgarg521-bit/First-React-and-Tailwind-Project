@@ -9,7 +9,7 @@ const initialState = {
 
 export const pasteSlice = createSlice({
   name: "paste",
-  initialState,
+  initialState, 
   reducers: {
     addToPastes: (state, action) => {
       const paste = action.payload;
@@ -17,7 +17,7 @@ export const pasteSlice = createSlice({
 
       localStorage.setItem("pastes", JSON.stringify(state.pastes));
 
-      toast.success("Paste Created Successfully");
+      // toast.success("Paste Created Successfully");
     },
 
     updateToPastes: (state, action) => {
@@ -32,7 +32,7 @@ export const pasteSlice = createSlice({
 
         localStorage.setItem("pastes", JSON.stringify(state.pastes));
 
-        toast.success("Paste Updated Successfully");
+        // toast.success("Paste Updated Successfully");
       }
     },
 
@@ -44,14 +44,14 @@ export const pasteSlice = createSlice({
 
       localStorage.setItem("pastes", JSON.stringify(state.pastes));
 
-      toast.success("Paste Deleted");
+      // toast.success("Paste Deleted");
     },
 
     resetAllPastes: (state) => {
       state.pastes = [];
       localStorage.removeItem("pastes");
 
-      toast.success("All Pastes Cleared");
+      // toast.success("All Pastes Cleared");
     },
   },
 });
